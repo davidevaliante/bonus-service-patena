@@ -57,12 +57,15 @@ const index: FunctionComponent<Props> = ({ streamerData }) => {
       .filter((it) => it.label === country)[0]
       .ordering.split(" ");
 
-    const requests = bonusForCountry[0].bonuses.map((b) =>
-      axios.get(`${configuration.api}/bonuses/${b.id}`)
-    );
+    // const requests = bonusForCountry[0].bonuses.map((b) =>
+    //   axios.get(`${configuration.api}/bonuses/${b.id}`)
+    // );
 
-    const bList = await Promise.all(requests);
-    let unorderedBonuses = bList.map((r) => r.data as StreamerBonus);
+    // const bList = await Promise.all(requests);
+    // let unorderedBonuses = bList.map((r) => r.data as StreamerBonus);
+
+    let unorderedBonuses = [...streamerData.bonuses];
+    console.log(unorderedBonuses, "ub");
 
     let ordered: StreamerBonus[] = [];
 
